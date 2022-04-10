@@ -96,18 +96,24 @@ int printNodesAtDistanceK(Node* root, Node* target, int k)
     }
 
     // next step is to know the ancestors to look outside this node
+    // find out the distance of left node from the target
     int DL = printNodesAtDistanceK(root->left, target, k);
 
+    // if DL == -1, it means that the target node is NOT present!
     if (DL != -1)
     {
-        // again 2 cases
-        // 1. it is the ancestor itself which is at K distance away from this target node
+        // again 2 cases 
+        // 1. it can be the ancestor itself which is at K distance away from this target node
         // 2. the node lies in the subtree of the ancestor (always in the right subtree in this case)
         
+        // if this is the ancestor itself
         if (DL + 1 == k)
         {
             cout << root->data << " ";
         }
+        // else we need to find out the opposite subtree's node 
+        // which is at k - DistanceOfKFromThisNode - 2/
+        // as we are currently finding for LEFT part only, we need to look on the RIGHT side!
         else
         {
             printLevel(root->right, k - DL - 2); // passing new effective level for this node
