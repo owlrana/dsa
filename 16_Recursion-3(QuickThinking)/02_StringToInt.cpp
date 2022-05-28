@@ -20,11 +20,11 @@ int stringToInt (char num[], int len, int unit)
 
 int main ()
 {
-    char num[] = "12344";
+    char num[] = "12370";
     int len = strlen(num);
 
     int value = stringToInt(num, len, 1);
-    cout << value + 1 << endl;
+    cout << value << endl;
 
     return 0;
 }
